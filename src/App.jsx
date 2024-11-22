@@ -1,42 +1,43 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/footer/Footer";
 
-const students = [
-  { id: 1, name: "Hieu", age: 21 },
-  { id: 2, name: "Hoang", age: 33 },
-  { id: 3, name: "Trong", age: 24 },
-  { id: 4, name: "Dong", age: 22 },
-];
-
-function StudentItem(props) {
-  return (
-    <li>
-      {props.student.name}-{props.student.age} Tuoi
-    </li>
-  );
-}
-
-function StudentList() {
-  return (
-    <ul>
-      {students.map((student, index) => (
-        <StudentItem key={index} student={student} />
-      ))}
-      <StudentItem student={{ name: "dung", age: 32 }} />
-      <StudentItem student={{ name: "an", age: 32 }} />
-    </ul>
-  );
-}
-
-function App(props) {
-  const [count, setCount] = useState(0);
+function Button(props) {
   console.log(props);
+  return <button className={props.variant}>{props.children}</button>;
+}
+
+function Welcome(props) {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    // setCount(count + 1);
+    // setCount(count + 1);
+    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 1);
+  }
+
   return (
     <>
-      <h1>Danh sach sinh vien</h1>
-      <StudentList />
+      <h1 style={{ color: "red" }}>Hello</h1>
+      <button onClick={handleClick}>Click</button>
+      {count}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header />
+      {/* <Button variant="btn btn-primary">Click me</Button>
+      <Button variant="btn btn-secondary">Haha</Button>
+      <Button variant="btn btn-warning">no click tui</Button>
+      <Button variant="btn btn-danger">cham tui di</Button> */}
+      <Welcome />
+      <Footer />
     </>
   );
 }
