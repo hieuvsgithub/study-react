@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,7 @@ const Shop = () => {
 
   function handleLimit(value) {
     if (value === "all") {
+      setLimit("total");
     } else {
       setLimit(value);
     }
@@ -51,8 +53,11 @@ const Shop = () => {
       {products.map((item) => {
         return (
           <div key={item.id}>
-            <h3>{item.title}</h3>
+            <Link to={`/products/${item.id}`}>
+              <h3>{item.title}</h3>
+            </Link>
             <span>{item.price}</span>
+            <span>Xem chi tiet</span>
           </div>
         );
       })}
